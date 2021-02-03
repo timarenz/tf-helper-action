@@ -1,29 +1,33 @@
-name: "tf-helper"
-description: "The Terraform Helper"
+name: 'tf-helper'
+description: 'The Terraform Helper'
+author: 'Tim Arenz'
 inputs:
   command:
-    description: "The tfh command you want to run. No need to add tfh itself. For examples see: https://github.com/hashicorp-community/tf-helper#subcommands"
+    description: 'The tfh command you want to run. No need to add tfh itself. For examples see: https://github.com/hashicorp-community/tf-helper#subcommands'
     required: true
   org:
-    description: "Terraform Cloud/Enterprise organization to use."
+    description: 'Terraform Cloud/Enterprise organization to use.'
     required: true
   workspace:
-    description: "Terraform Cloud/Enterprise workspace to use."
+    description: 'Terraform Cloud/Enterprise workspace to use.'
     required: true
   token:
-    description: "Token to use to connect to Terraform Cloud/Enterprise."
+    description: 'Token to use to connect to Terraform Cloud/Enterprise.'
     required: true
   hostname:
-    description: "Hostname of a Terraform (Enterprise) instance. No need to change unless you have a self-hosted installation."
+    description: 'Hostname of a Terraform (Enterprise) instance. No need to change unless you have a self-hosted installation.'
     required: false
-    default: "app.terraform.io"
+    default: 'app.terraform.io'
 # outputs:
 runs:
-  using: "docker"
-  image: "Dockerfile"
+  using: 'docker'
+  image: 'Dockerfile'
   args:
     - ${{ inputs.org }}
     - ${{ inputs.workspace }}
     - ${{ inputs.token }}
     - ${{ inputs.hostname }}
     - ${{ inputs.command }}
+branding:
+  icon: 'play'
+  color: 'purple'
