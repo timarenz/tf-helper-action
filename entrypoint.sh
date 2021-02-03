@@ -5,4 +5,10 @@ export TFH_name=$2
 export TFH_token=$3
 export TFH_hostname=$4
 
-echo $(/tf-helper/bin/tfh ${@:5})
+function tfh_func () {
+    /tf-helper/bin/tfh $@
+    return $?
+}
+
+tfh_func ${@:5}
+exit $?
